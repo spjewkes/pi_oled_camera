@@ -63,9 +63,10 @@ class OledBoard:
             key.released = False
 
     def write(self, buf):
-        img = Image.frombytes('RGB', (256, 256), buf)
-        img = img.resize((128, 64), Image.BILINEAR)
+        img = Image.frombytes('RGB', (512, 512), buf)
+        img = img.resize((128, 128), Image.BILINEAR)
         img = img.convert('1')
+        img = img.crop((0,32, 128,96))
 
         self.disp.image(img)
         self.disp.show()
@@ -85,7 +86,7 @@ def main():
     
     with PiCamera() as camera:
         
-        camera.resolution = (256, 256)
+        camera.resolution = (512, 512)
         camera.contrast = 50
         camera.rotation = 90
         camera.start_preview()
