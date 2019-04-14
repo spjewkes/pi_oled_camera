@@ -1,2 +1,2 @@
-# pi_oled_camera
+# Pi Oled Camera
 Simple program using the PI camera with an Oled display
